@@ -6,16 +6,32 @@ import {recipes} from './componets/tempList'
 import List from './componets/List'
 import Detail from './componets/Details'
 
+
+
 class App extends Component {
   state={
     recipes:recipes,
     url:'https://www.food2fork.com/api/search?key=7a1b014f00c830e5a47cc53ee58e6a80&q=chicken%20breast&page=2 ',
-    details_id:35382
+    details_id:35389,
+    pageN:0
   }
+
+
+
+  display=(index)=>{
+    switch(index){
+      default:
+      case 0:
+      return (<List recipes={this.state.recipes}/> )
+      case 1:
+      return ( <Detail  id={this.state.details_id} />)
+    }
+  }
+
 
  componentDidMount(){
 
- //this.getData()
+ this.getData()
 
   }
 
@@ -36,12 +52,15 @@ class App extends Component {
     }
   
   }
+
+
   render() {
     //console.log(this.state.recipes)
     return (
      <React.Fragment>
-    { /*<List recipes={this.state.recipes}/>*/} 
-     <Detail  id={this.state.details_id} />
+    
+      {this.display(this.state.pageN)}
+    
      </React.Fragment>
     );
   }
