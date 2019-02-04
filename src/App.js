@@ -8,12 +8,13 @@ import Detail from './componets/Details'
 
 
 
+
 class App extends Component {
   state={
     recipes:recipes,
     url:'https://www.food2fork.com/api/search?key=7a1b014f00c830e5a47cc53ee58e6a80&q=chicken%20breast&page=2 ',
     details_id:35389,
-    pageN:0
+    pageN:1
   }
 
 
@@ -21,13 +22,27 @@ class App extends Component {
   display=(index)=>{
     switch(index){
       default:
-      case 0:
-      return (<List recipes={this.state.recipes}/> )
       case 1:
-      return ( <Detail  id={this.state.details_id} />)
+      return (<List handleIndex={this.handleDetails} recipes={this.state.recipes}/> )
+      case 0:
+      return ( <Detail  handleIndex={this.handleIndex} id={this.state.details_id} />)
     }
   }
 
+  handleIndex=index=>{
+    this.setState({
+      pageN:index
+    })
+  }
+
+  handleDetails=(id,index)=>{
+     console.log(id,index)
+    this.setState({
+      pageN:index,
+      details_id:id
+
+    })
+  }
 
  componentDidMount(){
 

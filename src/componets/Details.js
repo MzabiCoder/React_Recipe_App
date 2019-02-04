@@ -36,13 +36,15 @@ Details=id=>{
   render() {
  // console.log(this.state.recipe)
 
+  const {handleIndex}=this.props
+
   const {ingredients,publisher,publisher_url,source_url,title,image_url}=this.state.recipe
     return (
      <React.Fragment>
      <div className="container">
      <div className="row">
      <div className="mx-auto col-md-6 my-5">
-      <button className="btn btn-warning mb-2 text-capitalize">back to recipe list</button>
+      <button onClick={()=>handleIndex(1)} className="btn btn-warning mb-2 text-capitalize">back to recipe list</button>
       <img src={image_url} className="d-block w-100 my-3" alt=""/>
      
      </div>

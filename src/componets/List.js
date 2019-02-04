@@ -5,8 +5,9 @@ import Search from './Search'
 export default class List extends Component {
   render() {
     //console.log(this.props.recipes)
-    const {recipes}=this.props
+    const {handleIndex,recipes}=this.props
     return (
+
       <React.Fragment>
       <h1>hellow from List</h1>
       <Search />
@@ -22,7 +23,7 @@ export default class List extends Component {
   {
      recipes.map(recipe=>{
    return  (  
-    <Recipe key={recipe.recipe_id} recipe={recipe}/> 
+    <Recipe key={recipe.recipe_id} handleIndex={handleIndex} recipe={recipe}/> 
     )
 
     })
