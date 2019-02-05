@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Recipe from './componets/Recipe'
+//import Recipe from './componets/Recipe'
 import {recipes} from './componets/tempList'
 import List from './componets/List'
-import Detail from './componets/Details'
+import Details from './componets/Details'
 
 
 
@@ -14,7 +14,8 @@ class App extends Component {
     recipes:recipes,
     url:'https://www.food2fork.com/api/search?key=7a1b014f00c830e5a47cc53ee58e6a80&q=chicken%20breast&page=2 ',
     details_id:35389,
-    pageN:1
+    pageN:1,
+    search:''
   }
 
 
@@ -23,9 +24,9 @@ class App extends Component {
     switch(index){
       default:
       case 1:
-      return (<List handleIndex={this.handleDetails} recipes={this.state.recipes}/> )
+      return (<List handlechange={this.handlechange} hundleSubmit={this.hundleSubmit} handleDetails={this.handleDetails}  recipes={this.state.recipes} value={this.state.search}/> )
       case 0:
-      return ( <Detail  handleIndex={this.handleIndex} id={this.state.details_id} />)
+      return ( <Details  handleIndex={this.handleIndex}  id={this.state.details_id} />)
     }
   }
 
@@ -44,9 +45,17 @@ class App extends Component {
     })
   }
 
+  handlechange=e=>{
+    console.log('hellow from handle change')
+  }
+  hundleSubmit=e=>{
+    e.preventDefault()
+   console.log('form submitted')
+  }
+
  componentDidMount(){
 
- this.getData()
+ //this.getData()
 
   }
 

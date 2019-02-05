@@ -5,25 +5,25 @@ import Search from './Search'
 export default class List extends Component {
   render() {
     //console.log(this.props.recipes)
-    const {handleIndex,recipes}=this.props
+    const {recipes,handleDetails,handlechange,hundleSubmit,value}=this.props
+   // const {handleDetails}=this.props
+
     return (
 
       <React.Fragment>
-      <h1>hellow from List</h1>
-      <Search />
-
-      <div className="container">
+      <Search handlechange={handlechange} value={value} hundleSubmit={hundleSubmit} />
+     <div className="container">
       <div className="row text-center my-5">
        <div className="col-10 mx-auto col-nd-6 text-center text-uppercase mb-3">
        <h1>Recies List</h1>
        </div>
        </div>
        </div>
-  <div className="row text-center p-4">
+  <div className="row p-4">
   {
      recipes.map(recipe=>{
    return  (  
-    <Recipe key={recipe.recipe_id} handleIndex={handleIndex} recipe={recipe}/> 
+    <Recipe key={recipe.recipe_id}  handleDetails={handleDetails} recipe={recipe}/> 
     )
 
     })
