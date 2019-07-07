@@ -15,7 +15,9 @@ class App extends Component {
     url:'https://www.food2fork.com/api/search?key=7a1b014f00c830e5a47cc53ee58e6a80&q=chicken%20breast&page=2 ',
     details_id:35389,
     pageN:1,
-    search:''
+    search:'',
+    base_url:'https://www.food2fork.com/api/search?key=7a1b014f00c830e5a47cc53ee58e6a80&q=chicken%20breast&page=2',
+    query:'&q='
   }
 
 
@@ -37,7 +39,7 @@ class App extends Component {
   }
 
   handleDetails=(id,index)=>{
-     console.log(id,index)
+    // console.log(id,index)
     this.setState({
       pageN:index,
       details_id:id
@@ -46,16 +48,33 @@ class App extends Component {
   }
 
   handlechange=e=>{
-    console.log('hellow from handle change')
+    //console.log('hellow from handle change')
+
+    this.setState({
+      search:e.target.value
+    },()=>{
+     // console.log(this.state.search)
+    })
   }
   hundleSubmit=e=>{
     e.preventDefault()
-   console.log('form submitted')
+ //  console.log('form submitted')
+
+ const {base_url,query,search}=this.state
+ 
+  this.setState({
+    url:`${base_url}${query}${search}`,
+    search:''
+  },()=>{
+   
+
+  })
+
   }
 
  componentDidMount(){
 
- //this.getData()
+ this.getData()
 
   }
 
